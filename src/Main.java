@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Main {
     //Random Class
-    Random random = new Random();
+    static Random random = new Random();
+
     //Scanner Class
     static Scanner scanner = new Scanner(System.in);
 
@@ -13,6 +14,7 @@ public class Main {
         start();
         introMainEntryRoom();
         mainEntryRoomChoice();
+        booth();
     }
 
     //Title
@@ -46,7 +48,7 @@ public class Main {
         } else if (answer == 2) {
             System.out.println("\nGame ending!");
             System.out.println("You have decided to quit the game!\n");
-            System.out.println(Colors.BRIGHT_PINK + "Goodbye Kitty! Thank you for playing =^ ^=. \n" + Colors.RESET);
+            System.out.println(Colors.BRIGHT_PINK + "Goodbye Kitty! Thank you for playing (^._.^)ﾉ <3  \n" + Colors.RESET);
             System.exit(0);
 
         } else {
@@ -93,7 +95,7 @@ public class Main {
             booth();
 
         } else if (choice == 4) {
-            jukeBox();
+            dj();
 
         } else if (choice == 5) {
             floorDance();
@@ -103,6 +105,7 @@ public class Main {
 
         }
     }
+
     //Bar
     public static void bar() {
         System.out.println(Colors.YELLOW + "Bar:" + Colors.RESET);
@@ -118,13 +121,13 @@ public class Main {
         int choice = scanner.nextInt();
         System.out.println(Colors.GREEN + "You chose " + choice + "\n" + Colors.RESET);
 
-        if (choice == 1 ) {
+        if (choice == 1) {
             cowTalk();
 
-        } else if (choice == 2 ) {
+        } else if (choice == 2) {
             drink();
 
-        } else if (choice == 3 ) {
+        } else if (choice == 3) {
             System.out.println(Colors.GREEN + "You have exited bar." + Colors.RESET);
             mainEntryRoomChoice();
         }
@@ -153,10 +156,67 @@ public class Main {
     }
 
     //RockPaperScissors Game
-    //Equals/Hashcode
     public static void game() {
-        System.out.println(Colors.YELLOW + "Rock, Paper, Scissors Game:" + Colors.RESET);
+        System.out.println(Colors.BLUE + "Welcome to the Rock, Paper, Scissors Game Cowboy!\n" + Colors.RESET);
 
+        //Loop
+        while (true) {
+            System.out.println(Colors.GREEN + "What would you like to choose?" + Colors.RESET);
+            System.out.println("(1) Rock, (2) Paper, (3) Scissors, (4) Back");
+
+            int choice = Main.scanner.nextInt();
+            System.out.println(Colors.GREEN + "You chose " + choice + "\n" + Colors.RESET);
+
+            if (choice == 1) {
+
+            } else if (choice == 2) {
+
+            } else if (choice == 3) {
+
+            } else if (choice == 4) {
+                Main.bar();
+
+            } else {
+                System.out.println(Colors.RED + "Invalid choice, try again." + Colors.RESET);
+                continue;
+
+            }
+
+            //Cow Choice
+            //Random Gen(1-3)
+            int cowChoice = random.nextInt(3) + 1;
+            System.out.println("Cow chooses: " + cowChoice);
+            if (choice == cowChoice) {
+                System.out.println(Colors.GREEN + "Tie!" + Colors.RESET);
+            } else if (
+                    ((choice == 1) && (cowChoice == 3)) ||
+                            ((choice == 2) && (cowChoice == 1)) ||
+                            ((choice == 3) && (cowChoice == 2))
+            ) {
+                System.out.println(Colors.YELLOW + "\nYou win!" + Colors.RESET);
+                System.out.println("\nWould you like to play again?");
+                playAgain();
+
+            } else {
+                System.out.println(Colors.RED + "You lose!" + Colors.BLUE + "Better luck next time champ!" + Colors.RESET);
+                System.out.println(Colors.BLUE + "Thanks for playing!" + Colors.RESET);
+                bar();
+            }
+        }
+    }
+
+    //Play Again
+    public static void playAgain() {
+        System.out.println("(1) Yes (2) No");
+        int choice = scanner.nextInt();
+        System.out.println(Colors.GREEN + "You chose " + choice + "\n" + Colors.RESET);
+
+        if (choice == 1) {
+            game();
+
+        } else if (choice == 2) {
+            bar();
+        }
     }
 
     //Drink
@@ -175,7 +235,7 @@ public class Main {
 
         if (choice == 1) {
             System.out.println("You take one big gulp!");
-            System.out.println(Colors.BRIGHT_PINK + "Ahhh~" + Colors.YELLOW + "Thats some good stuff!" + Colors.RESET);
+            System.out.println(Colors.BRIGHT_PINK + "Ahhh~ " + Colors.YELLOW + "That's some good stuff!" + Colors.RESET);
             drinkOptions();
 
         } else if (choice == 2) {
@@ -190,7 +250,7 @@ public class Main {
         System.out.println(Colors.YELLOW + "Bathroom:" + Colors.RESET);
         System.out.println("You have entered the bathroom...");
         System.out.println("Its a little dim in here but you can still see sinks and stalls.");
-        System.out.println(Colors.GREEN + "What would you like to do?" + Colors.RESET);
+        System.out.println(Colors.GREEN + "\nWhat would you like to do?" + Colors.RESET);
         bathroomChoices();
     }
 
@@ -216,7 +276,7 @@ public class Main {
     public static void washHands() {
         System.out.println(Colors.GREEN + "You wash your hands." + Colors.RESET);
         System.out.println(Colors.BRIGHT_PINK + "You are now a clean kitty =^ ^=!" + Colors.RESET);
-        System.out.println(Colors.GREEN + "What would you like to do now?" + Colors.RESET);
+        System.out.println(Colors.GREEN + "\nWhat would you like to do now?" + Colors.RESET);
         washHandsChoices();
     }
 
@@ -238,7 +298,7 @@ public class Main {
     //Toilet
     public static void toilet() {
         System.out.println("You stare at the big marble throne.");
-        System.out.println(Colors.GREEN + "What would you like to do?" + Colors.RESET);
+        System.out.println(Colors.GREEN + "\nWhat would you like to do?" + Colors.RESET);
         toiletChoices();
     }
 
@@ -255,7 +315,7 @@ public class Main {
             flushToilet();
 
         } else if (choice == 3) {
-            System.out.println( Colors.GREEN + "You have exited stall." + Colors.RESET);
+            System.out.println(Colors.GREEN + "You have exited stall." + Colors.RESET);
             bathroom();
         }
     }
@@ -270,15 +330,14 @@ public class Main {
         System.out.println(Colors.RED + "You have been flushed away..." + Colors.RESET);
         String flushedAway =
 
-                "       .__   .--_"  +
-                "       (ol l|    |" +
-                "         l l|    |" +
-                "          _.---:_ " +
-                "         ( -__-  /" +
-                "           '-.-'/ " +
-                "           |     |" +
-                "            ----- "
-                ;
+                "       .__   .--_" +
+                        "       (ol l|    |" +
+                        "         l l|    |" +
+                        "          _.---:_ " +
+                        "         ( -__-  /" +
+                        "           '-.-'/ " +
+                        "           |     |" +
+                        "            ----- ";
 
         System.out.println(flushedAway);
         System.exit(1);
@@ -288,9 +347,9 @@ public class Main {
     //Flush Toilet
     public static void flushToilet() {
         System.out.println(Colors.GREEN + "You look at the big " + Colors.YELLOW + "shiny button..." + Colors.RESET);
-        System.out.println(Colors.GREEN + "You place your paw on it and it makes a big " + Colors.YELLOW + "WOOOOOSH!!!" + Colors.RESET );
+        System.out.println(Colors.GREEN + "You place your paw on it and it makes a big " + Colors.YELLOW + "WOOOOOSH!!!" + Colors.RESET);
         System.out.println(Colors.BRIGHT_PINK + "You feel joy in doing this..." + Colors.RESET);
-        System.out.println(Colors.GREEN + "Would you like to flush again?" + Colors.RESET);
+        System.out.println(Colors.GREEN + "\nWould you like to flush again?" + Colors.RESET);
         flushToiletChoices();
 
     }
@@ -309,27 +368,28 @@ public class Main {
         }
     }
 
+
     //Booth
     public static void booth() {
         System.out.println(Colors.YELLOW + "Booth:" + Colors.RESET);
         System.out.println(Colors.GREEN + "You have entered the booth." + Colors.RESET);
         System.out.println("Time to " + Colors.YELLOW + "SHINE!!!" + Colors.RESET);
-        String boothDesign = "\"                                └(=^‥^=)┐ " +
-                "⠀⠀⠀⠀⠀⠀⠀⣀⠤⠐⠂⠈⠉⠉⠉⠁⠐⠂⠤⣀⠀⠀⠀⠀⠀⠀⠀  " +
-                "⠀⠀⠀⠀⢀⠔⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠢⡀⠀⠀⠀⠀  " +
-                "⠀⠀⢀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⡀⠀⠀  " +
-                "⠀⢀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⡄⠀  " +
-                "⢀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄  " +
-                "⠸⠀⠀⠀⠀⠀⠀⠀⠀⣠⠟⠁⣀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡡  " +
-                "⡇⠀⠀⠀⠀⠀⠀⠀⢰⠇⢀⠎⠀⠀⠀⠑⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⸸  "+
-                "⡇⠀⠀⠀⠀⠀⠀⠀⢸⡀⠘⡀⠀⠀⠀⢀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀  "+
-                "⢃⠀⠀⠀⠀⠀⠀⠀⠈⢷⠀⠘⠢⠤⠔⠋⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠰  "+
-                "⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠈⠀⠀⠀⠀⠀⠀⠀⠀⢀⠇  "+
-                "⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠌⠀  "+
-                "⠀⠀⠐⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠊⠀⠀  "+
-                "⠀⠀⠀⠀⠑⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠔⠁⠀⠀⠀  "+
-                "⠀⠀⠀⠀⠀⠀⠑⠂⠀⡀⠀⠀⠀⠀⠀⠀⠀⣀⡠⠔⠈⠀⠀⠀⠀⠀⠀  "+
-                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ";
+        String boothDesign = "                                └(=^‥^=)┐ \n" +
+                "⠀⠀⠀⠀⠀⠀⠀⣀⠤⠐⠂⠈⠉⠉⠉⠁⠐⠂⠤⣀⠀⠀⠀⠀⠀⠀⠀  \n" +
+                "⠀⠀⠀⠀⢀⠔⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠢⡀⠀⠀⠀⠀  \n" +
+                "⠀⠀⢀⡔⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⡀⠀⠀  \n" +
+                "⠀⢀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⡄⠀  \n" +
+                "⢀⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡄  \n" +
+                "⠸⠀⠀⠀⠀⠀⠀⠀⠀⣠⠟⠁⣀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡡  \n" +
+                "⡇⠀⠀⠀⠀⠀⠀⠀⢰⠇⢀⠎⠀⠀⠀⠑⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⸸  \n" +
+                "⡇⠀⠀⠀⠀⠀⠀⠀⢸⡀⠘⡀⠀⠀⠀⢀⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀  \n" +
+                "⢃⠀⠀⠀⠀⠀⠀⠀⠈⢷⠀⠘⠢⠤⠔⠋⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠰  \n" +
+                "⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠈⠀⠀⠀⠀⠀⠀⠀⠀⢀⠇  \n" +
+                "⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠌⠀  \n" +
+                "⠀⠀⠐⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠊⠀⠀  \n" +
+                "⠀⠀⠀⠀⠑⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠔⠁⠀⠀⠀  \n" +
+                "⠀⠀⠀⠀⠀⠀⠑⠂⠀⡀⠀⠀⠀⠀⠀⠀⠀⣀⡠⠔⠈⠀⠀⠀⠀⠀⠀  \n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ \n";
 
         System.out.println(boothDesign);
         boothChoices();
@@ -337,7 +397,8 @@ public class Main {
 
     //Booth Choices
     public static void boothChoices() {
-        System.out.println(Colors.GREEN + "(1) Yes (2) Exit " + Colors.RESET);
+        System.out.println("Would you like to DJ?!");
+        System.out.println("(1) Yes! (2) Exit ");
         int choice = scanner.nextInt();
         System.out.println(Colors.GREEN + "You chose " + choice + "\n" + Colors.RESET);
 
@@ -352,18 +413,93 @@ public class Main {
 
     //DJ
     public static void dj() {
-        System.out.println("");
+        System.out.println("You are now the DJ!");
+        System.out.println(Colors.YELLOW + "Let's see what you got!" + Colors.RESET);
 
+        jukeBox myJukeBox = new jukeBox(jukeBox.getSongs());
+        boolean injukeBox = true;
+
+        while (injukeBox) {
+            myJukeBox.display();
+            System.out.println("(0) Exit ");
+
+            if (scanner.hasNext()) {
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+
+                if (choice == 0) {
+                    System.out.println("Leaving JukeBox.");
+                    injukeBox = false;
+
+                } else {
+                    myJukeBox.playSong(choice);
+                }
+            } else {
+                System.out.println(Colors.RED + "Please enter a valid number." + Colors.RESET);
+                scanner.nextLine();
+            }
+        }
     }
 
-    //JukeBox
-    //Binary Heap
-    //Hash Table
-    //Binary Search tree
-    public static void jukeBox() {
-        System.out.println(Colors.YELLOW + "JukeBox:" + Colors.RESET);
+    public static class jukeBox {
 
+        //JUKEBOX CODE START
+        //JukeBox
+        public static class songList {
+            String title;
+            String number;
+
+            public songList(String number, String title) {
+                this.title = title;
+                this.number = number;
+            }
+        }
+
+        //Constructor loading
+        private songList[] playList;
+
+        public jukeBox(songList[] mySongs) {
+            this.playList = mySongs;
+
+        }
+
+        //Display
+        public void display() {
+            System.out.println(Colors.YELLOW + "\n~JUKE BOX~" + Colors.RESET);
+            for (int i = 0; i < playList.length; i++) {
+                System.out.println((i + 1) + ". " + playList[i].title);
+
+            }
+            System.out.println("Select song: ");
+
+        }
+
+        //Play Choice
+        public void playSong(int choice) {
+            if (choice < 1 || choice > playList.length) {
+                System.out.println(Colors.RED + "Invalid choice." + Colors.RESET);
+                return;
+            }
+
+            System.out.println("\nSong title: " + playList[choice - 1].title);
+        }
+
+        public static songList[] getSongs() {
+            songList[] mySongs = {
+                    new songList("(1)", "'the moment i said it' by DJ DEADHORSES"),
+                    new songList("(2)", "'Hayling' by Logistics, Emer Dineen"),
+                    new songList("(3)", "'midnight (on my tongue)' by Malibu Muisc "),
+                    new songList("(4)", "'Gatita Callejera' by CRRDR, Oxtek, Purple mami "),
+                    new songList("(5)", "'No ride home' by Aydn"),
+                    new songList("(6)", "'Weak Signal' by Mild Minds"),
+                    new songList("(7)", "'High' by Polygon, Lois Lauri"),
+                    new songList("(8)", "'High Speed Chase' by Catching Cairo"),
+                    new songList("(9)", "'Princess voiture' by Sexy Sushi, Rebeka Warrior, Mitch Silver"),
+            };
+            return mySongs;
+        }
     }
+
 
     //DanceFloor
     public static void floorDance() {
